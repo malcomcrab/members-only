@@ -7,8 +7,14 @@ Requirements for the software and other tools to build, test and push
 
     VSCODE or equivalent
     Node.js
-    Express
-    dotenv
+    "dotenv": "^16.4.7",
+    "ejs": "^3.1.10",
+    "express": "^4.21.2",
+    "express-session": "^1.18.1",
+    "express-validator": "^7.2.1",
+    "passport": "^0.7.0",
+    "passport-local": "^1.0.0",
+    "pg": "^8.13.3"
 
 
 Installing
@@ -16,8 +22,16 @@ A step by step series of examples that tell you how to get a development environ
 
     fork and clone respository
     install dependecies
-    setup database
-    
+    setup messages and users database and update db/pool.js.
+    To run locally on port 3000, type and enter in terminal:
+        node --watch app.js - 
+
+Authors
+
+    Malcom 
+
+
+<!-- To be added
 
 End with an example of getting some data out of the system or using it for a little demo
 
@@ -33,8 +47,5 @@ Checks if the best practices and the right coding style has been used.
 
 Give an example
 Deployment
-Add additional notes to deploy this on a live system
+Add additional notes to deploy this on a live system -->
 
-Authors
-
-    Malcom 
