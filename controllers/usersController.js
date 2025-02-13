@@ -1,5 +1,5 @@
 const { body, validationResult } = require("express-validator");
-
+const db = require("../db/queries")
 const usersStorage = require("../storages/usersStorage");
 const alphaErr = "must only contain letters.";
 const lengthErr = "must be between 1 and 10 characters.";
@@ -24,19 +24,18 @@ const validateUser = [
         });
       }
       const { firstName, lastName } = req.body;
-      usersStorage.addUser({ firstName, lastName });
+      db.createUser(firstName, lastName);
       res.redirect("/");
     }
   ];
 
 async function renderSignUpPage(req, res) {
-    console.log('sign up page visited')
+  const usernames = await db.getAllUsernames();
+  console.log(usernames)
     res.render("signUpPage", {
         title: 'Sign up'
     })
 }
-
-
 
 module.exports = {
     renderSignUpPage,
