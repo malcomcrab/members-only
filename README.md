@@ -7,6 +7,7 @@ Requirements for the software and other tools to build, test and push
 
     VSCODE or equivalent
     Node.js
+    "bcryptjs": "^3.0.0",
     "dotenv": "^16.4.7",
     "ejs": "^3.1.10",
     "express": "^4.21.2",

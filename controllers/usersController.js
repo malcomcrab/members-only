@@ -37,22 +37,21 @@ displayed in the errors.ejs partial.
 /* If no errors are detected the signup form data is passed to the createUser function in db/queries
 to be added to the database table as a new user.
 */
-    
-    
       try {
-        
+
         const { firstName, lastName, username, password } = req.body;
         db.createUser(firstName, lastName, username, password);
         res.redirect("/");
-       } catch (error) {
-          console.error(error);
-          next(error);
-         }
-      
-      
+      } catch (error) {
+        console.error(error);
+        next(error);
+      }
+
+
     }
   ];
 
+//Render sing up page when url is visited.
 async function renderSignUpPage(req, res) {
     res.render("signUpPage", {
         title: 'Sign up'
