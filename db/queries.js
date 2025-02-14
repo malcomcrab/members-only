@@ -26,10 +26,15 @@ async function getAllMessages(){
     return rows
 }
 
+async function createNewMessage(author_username,message, date_posted, time_posted){
+    await pool.query("INSERT INTO messages (author_username, message, date_posted, time_posted) VALUES (($1),($2),($3),($4))", [author_username,message, date_posted, time_posted])
+}
+
 module.exports = {
     getAllUsernames,
     createUser,
     getUser,
     getUserById,
-    getAllMessages
+    getAllMessages,
+    createNewMessage
 }

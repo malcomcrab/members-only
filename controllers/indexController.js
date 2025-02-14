@@ -4,7 +4,7 @@ const db = require("../db/queries")
 
 async function renderIndex(req, res) {
   const messages = await db.getAllMessages()
-  console.log(messages)
+  console.log(messages[0].date_posted.toDateString())
     res.render("index", { user: req.user, messages: messages });
     
 }

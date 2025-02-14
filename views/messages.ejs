@@ -4,7 +4,9 @@
   <% if (locals.user) {%>
     <ul>
         <% messages.map((message) => { %>
-          <li><%= message.message %> <%= message.author_username %></li>
+          <li> User: <%= message.author_username %> <br> <%= message.message %> 
+            Date: <%= message.date_posted.toDateString() %>  Time: <%= message.time_posted %>  
+          </li>
         <% }) %>
       </ul>
   <% } else { %>

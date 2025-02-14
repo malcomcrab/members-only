@@ -1,0 +1,11 @@
+
+  <% if (locals.user) {%>
+    <%- include("partials/errors.ejs") %>
+  <form action="/messages/create-message" method="POST">
+    <label for="author_username">Username: </label>
+    <input type="text" name="author_username" id="author_username" value=<%= user.username %> readonly>
+    <label for="message">Message: </label>
+    <input type="text" name="message" id="message" required>
+    <button type="submit">Submit</button>
+  </form>
+  <% } %>
