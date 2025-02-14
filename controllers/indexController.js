@@ -1,8 +1,12 @@
 
+const db = require("../db/queries")
 
 
 async function renderIndex(req, res) {
-    res.render("index", { user: req.user });
+  const messages = await db.getAllMessages()
+  console.log(messages)
+    res.render("index", { user: req.user, messages: messages });
+    
 }
 
 async function logOutRedirect(req, res, next) {

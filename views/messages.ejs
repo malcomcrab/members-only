@@ -1,0 +1,16 @@
+
+
+
+  <% if (locals.user) {%>
+    <ul>
+        <% messages.map((message) => { %>
+          <li><%= message.message %> <%= message.author_username %></li>
+        <% }) %>
+      </ul>
+  <% } else { %>
+    <ul>
+        <% messages.map((message) => { %>
+          <li><%= message.message %>s</li>
+        <% }) %>
+      </ul>
+  <%}%>

@@ -6,6 +6,7 @@ const session = require("express-session");
 const passport = require("passport");
 const usersRouter = require("./routes/usersRouter");
 const indexRouter = require("./routes/indexRouter");
+const messagesRouter = require("./routes/messagesRouter")
 const LocalStrategy = require('passport-local').Strategy;
 const db = require("./db/queries")
 const bcrypt = require("bcryptjs")
@@ -20,7 +21,8 @@ app.use(passport.session());
 app.use(express.urlencoded({ extended: false }));
 
 app.use("/", indexRouter);
-app.use("/users", usersRouter)
+app.use("/users", usersRouter);
+app.use("/messages", messagesRouter);
 app.post(
   "/log-in",
   passport.authenticate("local", {

@@ -21,9 +21,15 @@ async function getUserById(id) {
     return rows[0];
  }
 
+async function getAllMessages(){
+    const { rows } = await pool.query("SELECT * FROM messages")
+    return rows
+}
+
 module.exports = {
     getAllUsernames,
     createUser,
     getUser,
-    getUserById
+    getUserById,
+    getAllMessages
 }
