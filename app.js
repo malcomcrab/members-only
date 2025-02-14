@@ -1,13 +1,15 @@
 require("dotenv").config();
 const path = require("node:path");
-const { pool} = require("./db/pool");
+const { pool } = require("./db/pool");
 const express = require("express");
 const session = require("express-session");
 const passport = require("passport");
 const usersRouter = require("./routes/usersRouter");
-const indexRouter = require("./routes/indexRouter"); 
+const indexRouter = require("./routes/indexRouter");
 const LocalStrategy = require('passport-local').Strategy;
 const db = require("./db/queries")
+const bcrypt = require("bcryptjs")
+
 
 const app = express();
 app.set("views", path.join(__dirname, "views"));
@@ -31,21 +33,22 @@ passport.use(
   new LocalStrategy(async (username, password, done) => {
     try {
       const user = await db.getUser(username)
-      console.log(user)
       if (!user) {
         return done(null, false, { message: "Incorrect username" });
-        
+
       }
-      if (user.password !== password) {
-        console.log('not ok')
-        return done(null, false, { message: "Incorrect password" });
+      const match = await bcrypt.compare(password, user.password);
+      if (!match) {
+        // passwords do not match!
+        return done(null, false, { message: "Incorrect password" })
       }
+
       return done(null, user);
-    } catch(err) {
+    } catch (err) {
       return done(err);
     }
   })
-  
+
 );
 
 passport.serializeUser((user, done) => {
@@ -53,11 +56,11 @@ passport.serializeUser((user, done) => {
 });
 
 passport.deserializeUser(async (id, done) => {
-  
+
   try {
     const user = await db.getUserById(id)
     done(null, user);
-  } catch(err) {
+  } catch (err) {
     done(err);
   }
 });

@@ -1,12 +1,14 @@
 const pool = require("./pool");
+const bcrypt = require ("bcryptjs");
 
 async function getAllUsernames() {
     const {rows} = await pool.query("SELECT first_name FROM users ")
     return rows;
 }
 
-async function createUser(firstName, lastName) {
-    await pool.query("INSERT INTO users (first_name, last_name, member) VALUES (($1), ($2), ('false'))", [firstName,lastName])
+async function createUser(firstName, lastName, username, password) {
+    const hashedPassword = await bcrypt.hash(password, 10);
+    await pool.query("INSERT INTO users (first_name, last_name, username, password, member) VALUES (($1), ($2),($3),($4),('false'))", [firstName,lastName, username, hashedPassword])
 }
 
 async function getUser(username) {
@@ -18,8 +20,6 @@ async function getUserById(id) {
     const { rows } = await pool.query("SELECT * FROM users WHERE id = ($1)", [id]);
     return rows[0];
  }
-
-
 
 module.exports = {
     getAllUsernames,
