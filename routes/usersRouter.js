@@ -8,5 +8,4 @@ const usersRouter = Router();
 usersRouter.get("/sign-up-page", usersController.renderSignUpPage)
 usersRouter.post("/create", usersController.usersCreatePost);
 
-
 module.exports = usersRouter;

@@ -51,6 +51,7 @@ async function renderSignUpPage(req, res) {
     })
 }
 
+
 module.exports = {
     renderSignUpPage,
     usersCreatePost
