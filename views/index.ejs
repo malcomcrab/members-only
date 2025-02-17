@@ -9,7 +9,6 @@
   <a href="/users/sign-up-page">Sign Up</a>
   <a href="/membership">Membership</a>
   <% if (locals.user) {%>
-    <p><%= locals.user.member %></p>
     <h1>WELCOME BACK <%= user.username %></h1>
     <a href="/log-out">LOG OUT</a>
   <% } else { %>
@@ -23,6 +22,10 @@
     </form>
   <%} %>
   <%- include('messages', {messages: messages}) %>
-  <%- include('addMessageForm') %>
+  <% if (locals.user && locals.user.member != false) {%>
+    <h1>Add a message<%= user.username %></h1>
+    <%- include('addMessageForm') %>
+  <% } %>
+ 
 </body>
 </html>

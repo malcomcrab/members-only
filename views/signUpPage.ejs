@@ -7,6 +7,10 @@
 <body>
   <h1><%= title %></h1>
   <%- include("partials/errors.ejs") %>
+  <% if(locals.user) {%>
+    <h1>Wait <%= user.username %></h1>
+    <p>You have already signed up.</p>
+<% } else {%>
   <form action="/users/create" method="POST">
     <label for="firstName">First Name: </label>
     <input type="text" name="firstName" id="firstName" required>
@@ -18,6 +22,7 @@
     <input type="password" name="password" id="password" required>
     <button type="submit">Submit</button>
   </form>
+  <% } %>
   <a href="/">Back to home</a>
 </body>
 </html>

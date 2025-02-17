@@ -1,7 +1,7 @@
 
 
 
-  <% if (locals.user) {%>
+  <% if (locals.user && locals.user.member === true) {%>
     <ul>
         <% messages.map((message) => { %>
           <li> User: <%= message.author_username %> <br> <%= message.message %> 
@@ -9,7 +9,7 @@
           </li>
         <% }) %>
       </ul>
-  <% } else { %>
+  <% } else if(locals.user) { %>
     <ul>
         <% messages.map((message) => { %>
           <li><%= message.message %>s</li>

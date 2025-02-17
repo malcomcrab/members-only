@@ -53,7 +53,7 @@ to be added to the database table as a new user.
 
 //Render sing up page when url is visited.
 async function renderSignUpPage(req, res) {
-    res.render("signUpPage", {
+    res.render("signUpPage", { user: req.user,
         title: 'Sign up'
     })
 }
