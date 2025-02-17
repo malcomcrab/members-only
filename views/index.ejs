@@ -8,6 +8,7 @@
 
   <a href="/users/sign-up-page">Sign Up</a>
   <% if (locals.user) {%>
+    <p><%= locals.user.member %></p>
     <h1>WELCOME BACK <%= user.username %></h1>
     <a href="/log-out">LOG OUT</a>
   <% } else { %>

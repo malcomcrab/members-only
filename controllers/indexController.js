@@ -17,9 +17,14 @@ async function logOutRedirect(req, res, next) {
         res.redirect("/");
       });
 }
+
+async function renderMembershipForm(req, res) {
+  res.render("membership", { user: req.user });
+}
  
 
 module.exports = {
     renderIndex,
-    logOutRedirect
+    logOutRedirect,
+    renderMembershipForm
 }
