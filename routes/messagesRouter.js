@@ -7,5 +7,6 @@ const messagesRouter = Router();
 
 messagesRouter.get("/get-messages", messagesController.getMessages)
 messagesRouter.post("/create-message", messagesController.createMessage)
+messagesRouter.post("/change", messagesController.changeMembership)
 
 module.exports = messagesRouter

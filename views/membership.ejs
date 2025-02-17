@@ -9,12 +9,19 @@
     <a href="/">home</a>
     <% if(locals.user && locals.user.member === false) {%>
         <h1>WELCOME BACK <%= user.username %></h1>
-        <% } %>
-    <form>
-        <label for="membership">Become a member</label>
-        <button type="button" name="membership" id="membership">join</button>
-    </form>
+        <form action="/messages/change" method="post">
+            <label for="username">Become a member</label>
 
+            <button type="submit" name="username" id="username" value=<%= locals.user.username %>  >join</button>
+        </form>
+        <% } else if(locals.user && locals.user.member != false) {%>
+            <h1>WELCOME BACK <%= user.username %></h1>
+            <p>You are already a member.</p>
+        <% } else if(!locals.user) {%>
+            <p>You shouldn't be here. Sign up or log in to become a member
+
+            </p>
+        <% } %>
 
 </body>
 </html>

@@ -18,7 +18,15 @@ async function createMessage(req, res) {
   res.redirect("/")
 }
 
+async function changeMembership(req, res) {
+  const {username} = req.body
+  console.log(username)
+  await db.updateMembershipStatus(username)
+  res.redirect("/")
+  }
+
 module.exports = {
     getMessages,
-    createMessage
+    createMessage,
+    changeMembership
 }

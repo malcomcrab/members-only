@@ -21,6 +21,10 @@ async function getUserById(id) {
     return rows[0];
  }
 
+async function updateMembershipStatus(username) {
+    await pool.query("UPDATE users SET member = true WHERE username = ($1)", [username])
+}
+
 async function getAllMessages(){
     const { rows } = await pool.query("SELECT * FROM messages")
     return rows
@@ -36,5 +40,6 @@ module.exports = {
     getUser,
     getUserById,
     getAllMessages,
-    createNewMessage
+    createNewMessage,
+    updateMembershipStatus
 }
