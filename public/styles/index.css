@@ -93,6 +93,7 @@ button{
 
 .message-feed{
     overflow:scroll;
+    overflow-x: hidden;
     width:100%;
     height: 100%;
     background-color: rgb(255, 255, 255);
@@ -144,3 +145,106 @@ button{
     width: 100%;
     border:solid;
 }
+
+@media only screen and (min-width: 1200px) {
+    body {
+        display: grid;
+        grid-template-rows: 1fr 4fr;
+        grid-template-columns: 1fr 2fr 2fr;
+        background-color: lightblue;
+        width: 100%;
+    }
+
+    header{
+        grid-row: 1;
+        grid-column: 1/4;
+        width: auto;
+        height: fit-content;
+        border-radius: 0px;
+    }
+
+    .navbar{
+        font-size: large;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .navbar-container{
+        grid-column: 1;
+        grid-row:2;
+        display: flex;
+        padding: 1em;
+        position:inherit;
+        width:auto;
+        height:fit-content;
+        margin:0px 2em 0px 2em;
+        border-radius: 15px;
+    }
+
+    .log-in-container{
+        width: fit-content;
+        z-index:3;
+        position: fixed;
+        left:25%;
+        top:25%;
+    }
+    
+    .main-content-container{
+        grid-column: 3;
+        grid-row: 2;
+        padding:0px;
+    }
+
+    .newsfeed-title{
+        margin:0px
+    }
+
+   .message-feed{
+    grid-column: 2;
+    grid-row:2;
+    width:auto;
+    height: auto;
+    margin: 0px 1em 1em 1em;
+   }
+
+   .message-container{
+    grid-template-rows: 1fr 1fr 1fr;
+    padding: 5px;
+    margin-bottom: 10px;
+}
+
+.message-author{
+    grid-column: 2;
+    grid-row: 1;
+    color: black;
+    font-size: large;
+    margin:0px;
+    margin-top: 15px;
+}
+
+.message-text{
+    grid-column: 2;
+    grid-row: 2;
+    color: black;
+    font-size: large;
+    margin-top:10px;
+    margin-bottom: 10px;
+}
+
+.message-date-time{
+    grid-row: 3;
+    grid-column: 2;
+    font-size: medium;
+    margin:0px;
+    text-align: right;
+}
+
+.message-form{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    border:solid;
+}
+
+    
+  }
