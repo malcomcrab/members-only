@@ -1,18 +1,18 @@
 
 
 <% if(!locals.user) { %>
-    <nav>
+    <nav class="navbar">
         <a href="/">Homepage</a>
         <a href="/users/sign-up-page">Sign up</a>
     </nav>
 <% } else if(locals.user && locals.user.member != true) {%>
-    <nav>
+    <nav class="navbar">
         <a href="/">Home</a>
         <a href="/membership">Membership</a>
         <a href="/log-out">Log out</a>
     </nav> 
 <% } else if (locals.user && locals.user.member == true) {%>
-    <nav>
+    <nav class="navbar">
         <a href="/">Home</a>
         <a href="/log-out">Log out</a>
     </nav> 

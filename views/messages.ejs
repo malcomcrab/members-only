@@ -2,17 +2,16 @@
 
 
   <% if (locals.user && locals.user.member === true) {%>
-    <ul>
-        <% messages.map((message) => { %>
-          <li> User: <%= message.author_username %> <br> <%= message.message %> 
-            Date: <%= message.date_posted.toDateString() %>  Time: <%= message.time_posted %>  
-          </li>
-        <% }) %>
-      </ul>
+    <% messages.map((message) => { %>
+      <div class="message-container">
+        <h4 class="message-author"><%= message.author_username %></h4>
+        <p class="message-text"> <%= message.message %> </p>
+        <p class="message-date-time">Date: <%= message.date_posted.toDateString() %>  Time: <%= message.time_posted %>  </p>
+      </div>
+    <% }) %>
   <% } else if(locals.user) { %>
-    <ul>
+    
         <% messages.map((message) => { %>
-          <li><%= message.message %>s</li>
+          <p> <%= message.message %> </p>
         <% }) %>
-      </ul>
   <%}%>

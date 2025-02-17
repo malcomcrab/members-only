@@ -11,14 +11,15 @@
   <div class="navbar-container">
     <%- include('navbar', {user: locals.user}) %>
   </div>
-  
-  <div class="main-content-container">
+
+  <header>
     <% if (locals.user) {%>
       <h1>WELCOME BACK <%= user.username %>
       </h1>
 
       <% } else { %>
-        <h1>Hi there, log in or sign up.</h1>
+        <h1>Welcome to (App Name)</h1>
+        <h3>Hi there, log in or sign up.</h3>
         <div class="log-in-container">
           <form action="/log-in" method="POST" class="log-in-form">
             <label for="username">Username: </label>
@@ -29,12 +30,19 @@
           </form>
         </div>
         <%} %>
-          <%- include('messages', {messages: messages}) %>
+  </header>
+  
+  <div class="main-content-container">
+    
             <% if (locals.user && locals.user.member !=false) {%>
               <h1>Add a message<%= user.username %>
               </h1>
               <%- include('addMessageForm') %>
                 <% } %>
+        <div class="message-feed">
+          <%- include('messages', {messages: messages}) %>
+        </div>
+
   </div>
 
 </body>
