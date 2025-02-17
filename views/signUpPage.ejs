@@ -5,6 +5,7 @@
     <title><%= title %></title>
   </head>
 <body>
+  <%- include('navbar', {user: locals.user}) %>
   <h1><%= title %></h1>
   <%- include("partials/errors.ejs") %>
   <% if(locals.user) {%>
@@ -23,6 +24,5 @@
     <button type="submit">Submit</button>
   </form>
   <% } %>
-  <a href="/">Back to home</a>
 </body>
 </html>

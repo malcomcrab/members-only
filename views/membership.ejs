@@ -6,7 +6,7 @@
     <title>Document</title>
 </head>
 <body>
-    <a href="/">home</a>
+    <%- include('navbar', {user: locals.user}) %>
     <% if(locals.user && locals.user.member === false) {%>
         <h1>WELCOME BACK <%= user.username %></h1>
         <form action="/messages/change" method="post">

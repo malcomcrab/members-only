@@ -1,31 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
+  <link rel="stylesheet" type="text/css" href="/styles/index.css">
   <title></title>
 </head>
-<body>
 
-  <a href="/users/sign-up-page">Sign Up</a>
-  <a href="/membership">Membership</a>
-  <% if (locals.user) {%>
-    <h1>WELCOME BACK <%= user.username %></h1>
-    <a href="/log-out">LOG OUT</a>
-  <% } else { %>
-    <h1>please log in</h1>
-    <form action="/log-in" method="POST">
-      <label for="username">Username</label>
-      <input id="username" name="username" placeholder="username" type="text" />
-      <label for="password">Password</label>
-      <input id="password" name="password" type="password" />
-      <button>Log In</button>
-    </form>
-  <%} %>
-  <%- include('messages', {messages: messages}) %>
-  <% if (locals.user && locals.user.member != false) {%>
-    <h1>Add a message<%= user.username %></h1>
-    <%- include('addMessageForm') %>
-  <% } %>
- 
+<body>
+  <div class="navbar-container">
+    <%- include('navbar', {user: locals.user}) %>
+  </div>
+  
+  <div class="main-content-container">
+    <% if (locals.user) {%>
+      <h1>WELCOME BACK <%= user.username %>
+      </h1>
+
+      <% } else { %>
+        <h1>Hi there, log in or sign up.</h1>
+        <div class="log-in-container">
+          <form action="/log-in" method="POST" class="log-in-form">
+            <label for="username">Username: </label>
+            <input id="username" name="username" placeholder="username" type="text" />
+            <label for="password">Password: </label>
+            <input id="password" name="password" type="password" />
+            <button>Log In</button>
+          </form>
+        </div>
+        <%} %>
+          <%- include('messages', {messages: messages}) %>
+            <% if (locals.user && locals.user.member !=false) {%>
+              <h1>Add a message<%= user.username %>
+              </h1>
+              <%- include('addMessageForm') %>
+                <% } %>
+  </div>
+
 </body>
+
 </html>
