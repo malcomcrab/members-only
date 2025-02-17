@@ -12,6 +12,8 @@
   <% } else if(locals.user) { %>
     
         <% messages.map((message) => { %>
-          <p> <%= message.message %> </p>
+          <div class="message-container">
+            <p class="message-text"> <%= message.message %> </p>
+          </div>
         <% }) %>
   <%}%>
